@@ -1,7 +1,4 @@
-
 #include "include.h"
-
-//#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -23,13 +20,7 @@ T getNum(){
     }
     return result;
 }
-//获取一个字符串
-string getString(){
-    string result;
-    getline(cin, result);
-    return result;
-}
-//获取一维数组
+//获取多个数字
 template <typename T>
 vector<T> getNums(char c = ' '){
     vector<T> result;
@@ -54,26 +45,6 @@ vector<T> getNums(char c = ' '){
     result.push_back(tmp);
     return result;
 }
-//获取一维字符串组
-vector<string> getStrings(char c = ' '){
-    vector<string> result;
-    string str;
-    string tmpStr;
-    getline(cin, str);
-    if(str.size() == 0) return result;
-    for(int i = 0; i < str.size(); i++){
-        if(str[i] == c){
-            if(!tmpStr.empty()){
-                result.push_back(tmpStr);
-                tmpStr.clear();
-            }
-            continue;
-        }
-        tmpStr.push_back(str[i]);
-    }
-    result.push_back(tmpStr);
-    return result;
-}
 //获取二维数组
 template <typename T>
 vector< vector<T> > getNums2(int n, char c = ' '){
@@ -87,28 +58,36 @@ vector< vector<T> > getNums2(int n, char c = ' '){
     }
     return result;
 }
-//获取二维字符串
-vector< vector <string> > getStrings2(int n, char c = ' '){
-    vector< vector <string> > result;
-    vector< string > tmpString;
-    while (n--)
-    {
-        tmpString = getStrings(' ');
-        if(tmpString.size() == 0) break;
-        result.push_back(tmpString);
-        tmpString.clear();
+
+void huisu(vector<vector<int> > &matrix,int target, int &sum, int &i, int &j,vector<int> &tmpres, vector<vector<int> > &result){
+    if(sum == target){
+        result.push_back(tmpres);
+        return ;
+    }else if(sum < target){
+        if(i-1 >= 0){
+            i--;
+            tmpres.push_back(matrix[i][j]);
+            sum+=matrix[i][j];
+            huisu(matrix, target, sum, i, j, tmpres, result);
+            sum-=matrix[i][j];
+            tmpres.pop_back();
+            i++;
+        }
+        if(j+1 <= matrix[0].size()-1){
+            j++;
+            tmpres.push_back(matrix[i][j]);
+            sum+=matrix[i][j];
+            huisu(matrix, target, sum, i, j, tmpres, result);
+            sum-=matrix[i][j];
+            tmpres.pop_back();
+            j--;
+        }
+    }else{
+        return ;
     }
-    return result;
+
 }
 
-//输出一维vector
-template <typename T>
-void printVector(vector<T> input){
-    for(int i = 0; i < input.size(); ++i){
-        cout << input[i] << "\t";
-    }
-    cout << endl;
-}
 //输出二维vector
 template <typename T>
 void printVector2(vector<vector<T> > input){
@@ -122,8 +101,15 @@ void printVector2(vector<vector<T> > input){
 
 int main(int argc, char const *argv[])
 {
-    vector<vector<string> > nums = getStrings2(2);
-    printVector2(nums);
+    //获取矩阵目标路径（没有对空矩阵判断）
+    int n = getNum<int>();//矩阵行数
+    vector<vector<int> > matrix = getNums2<int>(n);//矩阵
+    int target = getNum<int>();//目标值
+    int i = n-1,j = 0;
+    int sum = matrix[i][j];
+    vector<int> tmpvec{matrix[i][j]};
+    vector<vector<int> > result;//结果
+    huisu(matrix, target, sum, i, j, tmpvec, result);
+    printVector2(result);
     return 0;
 }
-

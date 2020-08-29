@@ -4,6 +4,20 @@
 using namespace std;
 
 //常用方法
+/***
+以下函数可以直接用（algorithm头文件）
+求和函数         accumulate(vec.begin() , vec.end() , 0);//0初始变量
+查找            find(vec.begin(), vec.end(), 30);//寻找myvector中等于30的元素
+排序            sort(vec.begin() , vec.end());
+逆转            reverse(vec.begin() , vec.end());
+最大值           max(int a ,int b);
+最小值           min(int a, int b);
+绝对值           abs(int a, int b);
+
+字符串相关
+字符串转数字     to_string(int i);
+数字转字符串     atoi(str.c_str());
+***/
 //-----------------------------
 //获取素数列表(n > 1)
 //返回vector<bool>代表该位是否为素数
@@ -100,6 +114,7 @@ bool isHui(string str){
     }
     return true;
 }
+//二叉树节点
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -176,3 +191,21 @@ vector<int> postorderTraversal(TreeNode* root) {
     }
     return result;
 }
+//01背包问题
+int beibao(int bagSize, vector<int> weights, vector<int> values){
+    vector<vector<int> > dp(weights.size(), vector<int>(bagSize+1,0));
+    for (int i = 1; i < weights.size(); i++) {
+		for (int j = 1; j <= bagSize; j++) {
+			if (j < weights[i])
+				dp[i][j] = dp[i - 1][j];
+			else
+				dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weights[i]] + values[i]);
+		}
+	}
+    return dp[weights.size()-1][bagSize];
+}
+
+
+
+
+

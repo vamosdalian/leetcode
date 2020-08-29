@@ -6,7 +6,7 @@ using namespace std;
 int fun(int n,int v,vector<int> weight,vector<int> price,vector<int> res){
     for(int i=1;i<=n;++i){
         for(int j=v;j>=weight[i];--j){//注意j必须从v开始
-                res[j] = max(res[j-weight[i]]+price[i],res[j]);
+            res[j] = max(res[j-weight[i]]+price[i],res[j]);
         }
     }
     return res[v];

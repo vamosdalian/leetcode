@@ -89,8 +89,4 @@
 
 //#include <bits/stdc++.h>
 
-#define LL long long
-#define INT_MAX 2147483647
-#define INT_MIN (-INT_MAX - 1)
-
 
