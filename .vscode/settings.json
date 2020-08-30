@@ -8,6 +8,7 @@
         "deque": "cpp",
         "list": "cpp",
         "iosfwd": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "utility": "cpp"
     }
 }
