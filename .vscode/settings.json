@@ -9,6 +9,11 @@
         "list": "cpp",
         "iosfwd": "cpp",
         "algorithm": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "unordered_set": "cpp",
+        "ios": "cpp",
+        "stack": "cpp",
+        "iterator": "cpp",
+        "queue": "cpp"
     }
 }

@@ -145,24 +145,22 @@ vector<int> inorderTraversal(TreeNode* root) {
     }
     return result;
 }
+
 //二叉树前序遍历
 vector<int> preorderTraversal(TreeNode* root) {
+    if(root == nullptr) return {};
+    stack<TreeNode *> mystk;
     vector<int> result;
-    stack<TreeNode*> st;
-    if (root != NULL) st.push(root);
-    while (!st.empty()) {
-        TreeNode* node = st.top();
-        if (node != NULL) {
-            st.pop();
-            if (node->right) st.push(node->right);  // 右
-            if (node->left) st.push(node->left);    // 左
-            st.push(node);                          // 中
-            st.push(NULL);
-        } else {
-            st.pop();
-            node = st.top();
-            st.pop();
-            result.push_back(node->val);
+    mystk.push(root);
+    while(!mystk.empty()){
+        auto item = mystk.top();
+        result.push_back(item->val);
+        mystk.pop();
+        if(item->right){
+            mystk.push(item->right);
+        }
+        if(item->left){
+            mystk.push(item->left);
         }
     }
     return result;
