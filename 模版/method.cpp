@@ -145,7 +145,6 @@ vector<int> inorderTraversal(TreeNode* root) {
     }
     return result;
 }
-
 //二叉树前序遍历
 vector<int> preorderTraversal(TreeNode* root) {
     if(root == nullptr) return {};
@@ -202,8 +201,5 @@ int beibao(int bagSize, vector<int> weights, vector<int> values){
 	}
     return dp[weights.size()-1][bagSize];
 }
-
-
-
 
 
