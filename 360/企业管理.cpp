@@ -42,8 +42,33 @@ vector< vector<T> > getNums2(int n, char c = ' '){
     return result;
 }
 
+vector<int> daka(int n, vector<vector<int> > nums){
+    vector<int> visited(n+1,0);
+    for(auto item : nums){
+        if(item[1] == 0) {
+            visited[item[0]]-=2;
+        }else if(item[1] == 1){
+            visited[item[0]]++;
+        }
+    }
+    vector<int> result;
+    for(int i = 1;i <= n; i++){
+        if(visited[i] == 0){
+            result.push_back(i);
+        }
+    }
+    return result;
+}
+
 int main(int argc, char const *argv[])
 {
-    
+    vector<int> nAm = getNums<int>();
+    int n = nAm[0];
+    int m = nAm[1];
+    vector<vector<int> > nums = getNums2<int>(m);
+    vector<int> result = daka(n, nums);
+    for(auto re : result){
+        cout << re << " ";
+    }
     return 0;
 }
