@@ -103,18 +103,19 @@ vector< vector <string> > getStrings2(int n, char c = ' '){
 
 //输出一维vector
 template <typename T>
-void printVector(vector<T> input){
+void printVector(vector<T> input, string str = "\t"){
     for(int i = 0; i < input.size(); ++i){
-        cout << input[i] << "\t";
+        cout << input[i] << str;
     }
     cout << endl;
 }
+
 //输出二维vector
 template <typename T>
-void printVector2(vector<vector<T> > input){
+void printVector2(vector<vector<T> > input, string str = "\t"){
     for(int i = 0 ; i < input.size(); ++i){
         for(int j = 0; j < input[i].size(); ++j){
-            cout << input[i][j] << "\t";
+            cout << input[i][j] << str;
         }
         cout << endl;
     }
@@ -122,8 +123,10 @@ void printVector2(vector<vector<T> > input){
 
 int main(int argc, char const *argv[])
 {
-    vector<vector<string> > nums = getStrings2(2);
-    printVector2(nums);
+    // vector<vector<string> > nums = getStrings2(2);
+    // printVector2(nums);
+    int num = getNum<int>();
+    cout << num;
     return 0;
 }
 
