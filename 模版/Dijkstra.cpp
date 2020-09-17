@@ -50,8 +50,6 @@ vector< vector<T> > getNums2(int n, char c = ' '){
 //狄杰斯特拉 (无向图)
 unordered_map<int, int> Dijkstra(vector<vector<int> > G, vector<int> V, int start){ 
     unordered_map<int, int> dists;
-    // unordered_set<int> visited;
-    // unordered_set<int> unvisited;
     unordered_map<int, int> result;
     //初始化最短路径
     for(auto v : V){
@@ -113,4 +111,5 @@ inputs:
 2 0 400
 0 4 300
 1 4 100
+
 */
