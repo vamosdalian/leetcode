@@ -23,12 +23,14 @@ T getNum(){
     }
     return result;
 }
+
 //获取一个字符串
 string getString(){
     string result;
     getline(cin, result);
     return result;
 }
+
 //获取一维数组
 template <typename T>
 vector<T> getNums(char c = ' '){
@@ -54,6 +56,7 @@ vector<T> getNums(char c = ' '){
     result.push_back(tmp);
     return result;
 }
+
 //获取一维字符串组
 vector<string> getStrings(char c = ' '){
     vector<string> result;
@@ -74,6 +77,7 @@ vector<string> getStrings(char c = ' '){
     result.push_back(tmpStr);
     return result;
 }
+
 //获取二维数组
 template <typename T>
 vector< vector<T> > getNums2(int n, char c = ' '){
@@ -87,6 +91,7 @@ vector< vector<T> > getNums2(int n, char c = ' '){
     }
     return result;
 }
+
 //获取二维字符串
 vector< vector <string> > getStrings2(int n, char c = ' '){
     vector< vector <string> > result;
